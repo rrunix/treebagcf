@@ -14,7 +14,6 @@ ongoing.md
 *.prof
 *.stats
 *.json
-*.md
 gurobi.lic
 research/tests
 research/results_old/
