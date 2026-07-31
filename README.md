@@ -61,7 +61,7 @@ research/                  experiment workspace member (calf-research)
   exp_suite/               suite harness: config -> parallel resumable runs -> tables
   baselines/               OCEAN CP/MILP, HiGHS interval-MILP, brute force, ... (common interface)
   suite_configs/           the paper's suite configs (holdout_soft_120, holdout_soft_120_t4)
-  results/                 completed runs (per-task shards + aggregates) and figure/table outputs
+  results/                 experiment outputs (populated by the suite runs below)
   ideal/                   scripts that produce the paper's tables and figures
   tests/                   harness pytest suite + benchmark scripts
   data/                    bundled datasets (*.parquet + *.yaml)
@@ -90,12 +90,14 @@ uv run python research/run_suite.py aggregate --experiment holdout_soft_120
 In configs and result tables our method appears under the arm name `calf`
 (`calf_warm_early` etc. are ablation aliases of the same engine).
 
-Completed runs for both suites ship in `research/results/holdout_soft_120*`,
-so the analysis below works without re-running anything.
+Experiment outputs are not included in this repository: reproducing the
+paper's tables and figures requires running **both** suites above first
+(`holdout_soft_120`, then `holdout_soft_120_t4`), which populates
+`research/results/holdout_soft_120*` with the per-task shards and aggregates.
 
 ## Reproducing the paper's tables and figures
 
-The scripts in `research/ideal/` read the completed runs in
+Once both suites have run, the scripts in `research/ideal/` read the runs in
 `research/results/` and write markdown/LaTeX tables and PDF figures:
 
 ```sh

@@ -24,7 +24,7 @@ CP/MaxSAT do not. See `baselines/README.md` for known install issues.
 - `ideal/` — scripts producing the paper's tables and figures from completed runs.
 - `tests/` — the research pytest suite plus benchmark scripts.
 - `data/` — bundled datasets (`*.parquet` + `*.yaml`).
-- `results/` — completed per-experiment run directories and figure/table outputs.
+- `results/` — experiment outputs: per-experiment run directories and figure/table outputs (populated by the suite runs; not shipped with the repo).
 
 See the repo-root `README.md` for how to run the suites and regenerate the
 paper's tables and figures.
