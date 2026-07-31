@@ -1,0 +1,53 @@
+# 4-thread OCEAN ablation, holdout protocol (2026-07-14).  Identical split,
+# datasets, queries and 120s cap to `holdout_soft_120` so rows match 1:1 against
+# the single-threaded OCEAN arms there; the ONLY difference is `threads: 4`
+# (CP -> CP-SAT num_workers, MILP -> Gurobi Threads).  Distinct method names
+# (ocean_*_t4) so accounting never collides with the t1 run.
+#
+# Cached train-only forests and the .split.json from holdout_soft_120 are reused
+# (same rf params + split_seed), so no retraining.  Run with only 2 workers so
+# 2 x 4 = 8 solver threads stay bounded and don't oversubscribe / interfere with
+# any other running suite.
+experiment: holdout_soft_120_t4
+data_root: research/data
+seed: 0
+
+test_frac: 0.2
+split_seed: 0
+
+time_cap_s: 120
+workers: 2
+kill_slack: 1.5
+kill_grace_s: 30
+
+metric: plain_l1
+norm: 1
+threshold: 0.5
+
+rf:
+  default: {n_estimators: 100}
+
+datasets:
+  - banknote
+  - breast_cancer
+  - digits_38
+  - digits_even
+  - ionosphere
+  - mammographic_masses
+  - occupancy
+  - pima
+  - wine
+  - abalone
+  - seismic
+
+queries:
+  strategy: test_sample
+  n_queries: 150
+
+methods:
+  ocean_cp_t4:
+    voting: soft
+    threads: 4
+  ocean_milp_t4:
+    voting: soft
+    threads: 4

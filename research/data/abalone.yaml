@@ -1,0 +1,39 @@
+name: abalone
+target: y
+n_classes: 2
+n_samples: 4177
+features:
+- name: sex
+  kind: categorical
+  categories:
+  - F
+  - I
+  - M
+- name: length
+  kind: numerical
+  lo: 0.075
+  hi: 0.815
+- name: diameter
+  kind: numerical
+  lo: 0.055
+  hi: 0.65
+- name: height
+  kind: numerical
+  lo: 0.0
+  hi: 1.13
+- name: whole_weight
+  kind: numerical
+  lo: 0.002
+  hi: 2.8255
+- name: shucked_weight
+  kind: numerical
+  lo: 0.001
+  hi: 1.488
+- name: viscera_weight
+  kind: numerical
+  lo: 0.0005
+  hi: 0.76
+- name: shell_weight
+  kind: numerical
+  lo: 0.0015
+  hi: 1.005

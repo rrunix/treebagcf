@@ -1,0 +1,21 @@
+name: banknote
+target: y
+n_classes: 2
+n_samples: 1372
+features:
+- name: variance_wti
+  kind: numerical
+  lo: -7.0421
+  hi: 6.8248
+- name: skewness_wti
+  kind: numerical
+  lo: -13.7731
+  hi: 12.9516
+- name: curtosis_wty
+  kind: numerical
+  lo: -5.2861
+  hi: 17.9274
+- name: entropy
+  kind: numerical
+  lo: -8.5482
+  hi: 2.4495

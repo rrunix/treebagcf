@@ -1,0 +1,62 @@
+# Holdout protocol (2026-07-13): stratified 80/20 train/test split.  The forest
+# is fit on the train split; calf's alpha warm-up and incumbent seed see train
+# rows only; explanations are generated for up to `n_queries` held-out TEST
+# factuals per dataset (target = flip of the model's prediction).  The
+# feature-domain box stays full-data (search space, not a learned param).
+#
+# Methods: our approach (calf, warm_early config) vs OCEAN-CP and OCEAN-MILP.
+# milp_soft is intentionally excluded here (intractable / cap-overshooting on
+# the big-leaf datasets; run it separately if needed).
+#
+# Est. ~9 h wall at 6 workers (long pole ocean_milp/abalone ~5 h); fits 24 h
+# with margin.  Repeated-split error bars = clone with a different split_seed.
+experiment: holdout_soft_120
+data_root: research/data
+seed: 0
+
+test_frac: 0.2
+split_seed: 0
+
+time_cap_s: 120
+workers: 7
+kill_slack: 1.5
+kill_grace_s: 30
+
+metric: plain_l1
+norm: 1
+threshold: 0.5
+
+rf:
+  default: {n_estimators: 100}
+
+datasets:
+  - banknote
+  - breast_cancer
+  - digits_38
+  - digits_even
+  - ionosphere
+  - mammographic_masses
+  - occupancy
+  - pima
+  - wine
+  - abalone
+  - seismic
+
+queries:
+  strategy: test_sample
+  n_queries: 150
+
+methods:
+  calf:
+    voting: soft
+    max_iters: 100000000
+    alpha_warm: true
+    alpha_warm_k: 16
+    alpha_warm_iters: 1000
+    dual_lb_start_iter: 5000
+  ocean_cp:
+    voting: soft
+  ocean_milp:
+    voting: soft
+  milp_soft:
+    voting: soft

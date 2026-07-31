@@ -1,0 +1,30 @@
+name: compas
+target: y
+n_classes: 2
+n_samples: 5278
+features:
+- name: AgeGroup
+  kind: categorical
+  categories:
+  - '1'
+  - '2'
+  - '3'
+- name: Race
+  kind: categorical
+  categories:
+  - '0'
+  - '1'
+- name: Sex
+  kind: categorical
+  categories:
+  - '0'
+  - '1'
+- name: PriorsCount
+  kind: numerical
+  lo: 0.0
+  hi: 38.0
+- name: ChargeDegree
+  kind: categorical
+  categories:
+  - '0'
+  - '1'

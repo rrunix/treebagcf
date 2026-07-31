@@ -1,0 +1,59 @@
+[project]
+name = "calf-research"
+version = "0.1.0"
+description = "Experiment harness, benchmarks, and SOTA baselines for the CALF counterfactual method."
+readme = "README.md"
+requires-python = ">=3.12,<3.14"
+license = { text = "MIT" }
+authors = [{ name = "Ruben Rodriguez" }]
+# The experiments layer: depends on the core method (workspace) plus the
+# harness/plotting stack.  The SOTA baseline solver backends are the optional
+# `baselines` extra so the harness installs light and only pulls Gurobi/OCEAN/
+# OR-Tools when you actually run the comparison.
+dependencies = [
+    "calf",
+    "numpy>=1.24",
+    "scikit-learn>=1.3",
+    "pandas>=2.0",
+    "pyarrow>=14",
+    "PyYAML>=6.0",
+    "joblib>=1.3",
+    "tqdm>=4.67.3",
+    "matplotlib>=3.10.9",
+    "networkx>=3.4.2",
+    "snakeviz>=2.2.2",
+    "ipython>=8.39.0",
+]
+
+[project.optional-dependencies]
+# SOTA baselines (OCEAN MILP/CP/MaxSAT).  ortools pinned to 9.12.4544: newer
+# builds rebuild CpModel with a pybind11 metaclass that conflicts with oceanpy's
+# `class BaseModel(ABC, cp.CpModel)`, and 9.13 has no macOS wheel.  gurobipy is
+# only used by the MILP backend (which also needs a Gurobi licence at run time;
+# CP/MaxSAT do not).  Pinned < 13: oceanpy 2.0.3 reads results via the pre-13
+# `Var.X` API, which gurobipy 13 removed.  See baselines/README.md.
+baselines = [
+    "oceanpy==2.0.3",
+    "ortools==9.12.4544",
+    "gurobipy<13",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["baselines", "exp_suite"]
+
+[tool.uv.sources]
+calf = { workspace = true }
+
+[tool.pytest.ini_options]
+# pytest only collects test_*.py, so the benchmark scripts in tests/ are
+# ignored — only the test_*.py suite runs.
+testpaths = ["tests"]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.0.3",
+]

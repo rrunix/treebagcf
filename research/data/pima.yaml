@@ -1,0 +1,37 @@
+name: pima
+target: y
+n_classes: 2
+n_samples: 768
+features:
+- name: pregnancies
+  kind: numerical
+  lo: 0.0
+  hi: 17.0
+- name: glucose
+  kind: numerical
+  lo: 0.0
+  hi: 199.0
+- name: blood_pressure
+  kind: numerical
+  lo: 0.0
+  hi: 122.0
+- name: skin_thickness
+  kind: numerical
+  lo: 0.0
+  hi: 99.0
+- name: insulin
+  kind: numerical
+  lo: 0.0
+  hi: 846.0
+- name: bmi
+  kind: numerical
+  lo: 0.0
+  hi: 67.0
+- name: diabetes_pedigree_function
+  kind: numerical
+  lo: 0.078
+  hi: 2.42
+- name: age
+  kind: numerical
+  lo: 21.0
+  hi: 81.0

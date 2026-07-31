@@ -1,0 +1,49 @@
+name: post_operative
+target: y
+n_classes: 3
+n_samples: 86
+features:
+- name: l_core
+  kind: categorical
+  categories:
+  - high
+  - low
+  - mid
+- name: l_surf
+  kind: categorical
+  categories:
+  - high
+  - low
+  - mid
+- name: l_02
+  kind: categorical
+  categories:
+  - excellent
+  - good
+- name: l_bp
+  kind: categorical
+  categories:
+  - high
+  - low
+  - mid
+- name: surf_stbl
+  kind: categorical
+  categories:
+  - stable
+  - unstable
+- name: core_stbl
+  kind: categorical
+  categories:
+  - mod-stable
+  - stable
+  - unstable
+- name: bp_stbl
+  kind: categorical
+  categories:
+  - mod-stable
+  - stable
+  - unstable
+- name: comfort
+  kind: numerical
+  lo: 5.0
+  hi: 15.0

@@ -1,0 +1,25 @@
+name: mammographic_masses
+target: y
+n_classes: 2
+n_samples: 830
+features:
+- name: bi-rads
+  kind: numerical
+  lo: 0.0
+  hi: 55.0
+- name: age
+  kind: numerical
+  lo: 18.0
+  hi: 96.0
+- name: shape
+  kind: numerical
+  lo: 1.0
+  hi: 4.0
+- name: margin
+  kind: numerical
+  lo: 1.0
+  hi: 5.0
+- name: density
+  kind: numerical
+  lo: 1.0
+  hi: 4.0

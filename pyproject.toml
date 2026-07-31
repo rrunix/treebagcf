@@ -1,0 +1,43 @@
+[project]
+name = "calf"
+version = "0.1.0"
+description = "CALF (Certified Anytime Lagrangian Forest): certified-optimal counterfactuals for random forests."
+readme = "README.md"
+# Pinned to 3.12/3.13: the OCEAN baselines (in the `research` workspace member)
+# need an ortools whose CpModel is ABC-compatible with oceanpy (< 9.14) *and*
+# has a macOS arm64 wheel — 9.12.4544 — and it only ships cp312/cp313.  oceanpy
+# floors Python >= 3.12.  See research/baselines/README.md "Known install issues".
+requires-python = ">=3.12,<3.14"
+license = { text = "MIT" }
+authors = [{ name = "Ruben Rodriguez" }]
+# Core method only.  The experiments/benchmarks and the SOTA baselines live in
+# the `research` workspace member (research/pyproject.toml); the baseline solver
+# backends (OCEAN/Gurobi/OR-Tools) are its optional `baselines` extra.
+dependencies = [
+    "numpy>=1.24",
+    "scikit-learn>=1.3",
+    "scipy>=1.10",
+    "numba>=0.65.1",
+    # dataset loader (calf.datasets) reads parquet + yaml
+    "pandas>=2.0",
+    "pyarrow>=14",
+    "PyYAML>=6.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/calf"]
+
+[tool.uv.workspace]
+members = ["research"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.0.3",
+]

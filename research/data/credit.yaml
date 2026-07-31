@@ -1,0 +1,66 @@
+name: credit
+target: y
+n_classes: 2
+n_samples: 29623
+features:
+- name: isMale
+  kind: categorical
+  categories:
+  - '0'
+  - '1'
+- name: isMarried
+  kind: categorical
+  categories:
+  - '0'
+  - '1'
+- name: AgeGroup
+  kind: categorical
+  categories:
+  - '1'
+  - '2'
+  - '3'
+  - '4'
+- name: EducationLevel
+  kind: categorical
+  categories:
+  - '1'
+  - '2'
+  - '3'
+  - '4'
+- name: MaxBillAmountOverLast6Months
+  kind: numerical
+  lo: 0.0
+  hi: 50810.0
+- name: MaxPaymentAmountOverLast6Months
+  kind: numerical
+  lo: 0.0
+  hi: 51430.0
+- name: MonthsWithZeroBalanceOverLast6Months
+  kind: numerical
+  lo: 0.0
+  hi: 6.0
+- name: MonthsWithLowSpendingOverLast6Months
+  kind: numerical
+  lo: 0.0
+  hi: 6.0
+- name: MonthsWithHighSpendingOverLast6Months
+  kind: numerical
+  lo: 0.0
+  hi: 6.0
+- name: MostRecentBillAmount
+  kind: numerical
+  lo: 0.0
+  hi: 29450.0
+- name: MostRecentPaymentAmount
+  kind: numerical
+  lo: 0.0
+  hi: 15420.0
+- name: TotalMonthsOverdue
+  kind: numerical
+  lo: 0.0
+  hi: 36.0
+- name: HasHistoryOfOverduePayments
+  kind: categorical
+  categories:
+  - '0'
+  - '1'

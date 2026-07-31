@@ -1,0 +1,92 @@
+name: adult
+target: y
+n_classes: 2
+n_samples: 32561
+features:
+- name: age
+  kind: numerical
+  lo: 17.0
+  hi: 90.0
+- name: NativeCountry
+  kind: categorical
+  categories:
+  - Non-United-States
+  - United-States
+- name: WorkClass
+  kind: categorical
+  categories:
+  - '?'
+  - Federal-gov
+  - Local-gov
+  - Never-worked
+  - Private
+  - Self-emp-inc
+  - Self-emp-not-inc
+  - State-gov
+  - Without-pay
+- name: EducationNumber
+  kind: numerical
+  lo: 1.0
+  hi: 16.0
+- name: EducationLevel
+  kind: categorical
+  categories:
+  - Assoc-acdm
+  - Assoc-voc
+  - Bachelors
+  - Doctorate
+  - HS-grad
+  - Masters
+  - Prof-school
+  - Some-college
+  - high-school
+  - prim-middle-school
+- name: MaritalStatus
+  kind: categorical
+  categories:
+  - Divorced
+  - Married-AF-spouse
+  - Married-civ-spouse
+  - Married-spouse-absent
+  - Never-married
+  - Separated
+  - Widowed
+- name: Occupation
+  kind: categorical
+  categories:
+  - '?'
+  - Adm-clerical
+  - Armed-Forces
+  - Craft-repair
+  - Exec-managerial
+  - Farming-fishing
+  - Handlers-cleaners
+  - Machine-op-inspct
+  - Other-service
+  - Priv-house-serv
+  - Prof-specialty
+  - Protective-serv
+  - Sales
+  - Tech-support
+  - Transport-moving
+- name: Relationship
+  kind: categorical
+  categories:
+  - Husband
+  - Not-in-family
+  - Other-relative
+  - Own-child
+  - Unmarried
+  - Wife
+- name: CapitalGain
+  kind: numerical
+  lo: 0.0
+  hi: 99999.0
+- name: CapitalLoss
+  kind: numerical
+  lo: 0.0
+  hi: 4356.0
+- name: HoursPerWeek
+  kind: numerical
+  lo: 1.0
+  hi: 99.0

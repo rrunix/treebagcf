@@ -1,0 +1,57 @@
+name: wine
+target: y
+n_classes: 2
+n_samples: 130
+features:
+- name: alcohol
+  kind: numerical
+  lo: 11.03
+  hi: 14.83
+- name: malic_acid
+  kind: numerical
+  lo: 0.74
+  hi: 5.8
+- name: ash
+  kind: numerical
+  lo: 1.36
+  hi: 3.23
+- name: alcalinity_of_ash
+  kind: numerical
+  lo: 10.6
+  hi: 30.0
+- name: magnesium
+  kind: numerical
+  lo: 70.0
+  hi: 162.0
+- name: total_phenols
+  kind: numerical
+  lo: 1.1
+  hi: 3.88
+- name: flavanoids
+  kind: numerical
+  lo: 0.57
+  hi: 5.08
+- name: nonflavanoid_phenols
+  kind: numerical
+  lo: 0.13
+  hi: 0.66
+- name: proanthocyanins
+  kind: numerical
+  lo: 0.41
+  hi: 3.58
+- name: color_intensity
+  kind: numerical
+  lo: 1.28
+  hi: 8.9
+- name: hue
+  kind: numerical
+  lo: 0.69
+  hi: 1.71
+- name: OD280_OD315_of_diluted_wines
+  kind: numerical
+  lo: 1.59
+  hi: 4.0
+- name: proline
+  kind: numerical
+  lo: 278.0
+  hi: 1680.0

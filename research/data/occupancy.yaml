@@ -1,0 +1,25 @@
+name: occupancy
+target: y
+n_classes: 2
+n_samples: 2665
+features:
+- name: Temperature
+  kind: numerical
+  lo: 20.2
+  hi: 24.4083333333333
+- name: Humidity
+  kind: numerical
+  lo: 22.1
+  hi: 31.4725
+- name: Light
+  kind: numerical
+  lo: 0.0
+  hi: 1697.25
+- name: CO2
+  kind: numerical
+  lo: 427.5
+  hi: 1402.25
+- name: HumidityRatio
+  kind: numerical
+  lo: 0.0033033144722347
+  hi: 0.0053777588397133
