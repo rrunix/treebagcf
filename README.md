@@ -90,10 +90,22 @@ uv run python research/run_suite.py aggregate --experiment holdout_soft_120
 In configs and result tables our method appears under the arm name `calf`
 (`calf_warm_early` etc. are ablation aliases of the same engine).
 
-Experiment outputs are not included in this repository: reproducing the
-paper's tables and figures requires running **both** suites above first
-(`holdout_soft_120`, then `holdout_soft_120_t4`), which populates
-`research/results/holdout_soft_120*` with the per-task shards and aggregates.
+Experiment outputs are not committed to this repository. To reproduce the
+paper's tables and figures, either run **both** suites above
+(`holdout_soft_120` first, then `holdout_soft_120_t4`), or download the
+completed runs (`ideal_experiments.zip`, ~14 MB — the per-task shards,
+aggregates, and cached forests for both suites, plus the generated
+tables and figures) from the repository's GitHub Releases page and unpack
+it into `research/results/`:
+
+```sh
+curl -L -o research/results/ideal_experiments.zip \
+  https://github.com/rrunix/treebagcf/releases/download/experiments-v1/ideal_experiments.zip
+# (or, with the GitHub CLI: gh release download experiments-v1 -p ideal_experiments.zip -O research/results/ideal_experiments.zip)
+unzip research/results/ideal_experiments.zip -d research/results/
+```
+
+Either way `research/results/holdout_soft_120*` ends up populated.
 
 ## Reproducing the paper's tables and figures
 
